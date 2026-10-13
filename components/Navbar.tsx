@@ -88,7 +88,7 @@ export function Navbar() {
           {isConnected && isMonad && (
             <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-medium text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
-              Monad Testnet
+              Monad (143)
             </div>
           )}
 

@@ -10,7 +10,7 @@ export const REGISTRY_ADDRESS = (process.env.NEXT_PUBLIC_REGISTRY_ADDRESS || "")
  */
 export const publicClient = createPublicClient({
   chain: monadTestnet,
-  transport: http("https://testnet-rpc.monad.xyz"),
+  transport: http(process.env.NEXT_PUBLIC_MONAD_RPC || "https://rpc.monad.xyz"),
 });
 
 /**

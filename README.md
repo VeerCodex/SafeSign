@@ -74,10 +74,10 @@ SafeSign bridges the gap between deep smart contract security and everyday users
 - **AI Engine:** Google Gemini API (`@google/generative-ai`), called strictly server-side
 - **Smart Contract:** Solidity `0.8.20` (`SafeSignRegistry.sol`) compiled with `solc`
 - **Web3 & Blockchain:** `viem` + Injected Browser Wallet (`window.ethereum` - MetaMask, Rabby, Phantom)
-- **Network:** **Monad Testnet**
-  - **Chain ID:** `10143` (`0x279f`)
-  - **RPC URL:** `https://testnet-rpc.monad.xyz`
-  - **Block Explorer:** `https://testnet.monadexplorer.com`
+- **Network:** **Monad**
+  - **Chain ID:** `143` (`0x8f`) *(also supports legacy testnet `10143`)*
+  - **RPC URL:** `https://rpc.monad.xyz`
+  - **Block Explorer:** `https://monadscan.com`
   - **Currency:** `MON`
 
 ---

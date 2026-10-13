@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
-import { monadTestnet, MONAD_CHAIN_ID_HEX } from "@/lib/monad";
+import { monadChain, MONAD_CHAIN_ID_HEX, isMonadChain } from "@/lib/monad";
 
 interface WalletContextType {
   address: `0x${string}` | null;
@@ -33,7 +33,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [isConnecting, setIsConnecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const isMonad = chainId === monadTestnet.id;
+  const isMonad = isMonadChain(chainId);
 
   const switchToMonad = useCallback(async () => {
     if (typeof window === "undefined" || !(window as any).ethereum) {
@@ -56,23 +56,23 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
             params: [
               {
                 chainId: MONAD_CHAIN_ID_HEX,
-                chainName: "Monad Testnet",
+                chainName: "Monad",
                 nativeCurrency: {
                   name: "Monad",
                   symbol: "MON",
                   decimals: 18,
                 },
-                rpcUrls: ["https://testnet-rpc.monad.xyz"],
-                blockExplorerUrls: ["https://testnet.monadexplorer.com"],
+                rpcUrls: ["https://rpc.monad.xyz"],
+                blockExplorerUrls: ["https://monadscan.com"],
               },
             ],
           });
           setError(null);
         } catch (addError: any) {
-          setError(addError.message || "Failed to add Monad Testnet to wallet.");
+          setError(addError.message || "Failed to add Monad to wallet.");
         }
       } else {
-        setError(switchError.message || "Failed to switch to Monad Testnet.");
+        setError(switchError.message || "Failed to switch to Monad.");
       }
     }
   }, []);

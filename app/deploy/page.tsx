@@ -145,7 +145,7 @@ export default function DeployPage() {
             <div>
               <h2 className="text-lg font-bold text-white">Option 1: One-Click Browser Deploy</h2>
               <p className="text-xs text-gray-400">
-                Deploy directly using your connected wallet on Monad Testnet (Chain ID 10143).
+                Deploy directly using your connected wallet on Monad (Chain ID 143 / 10143, RPC: https://rpc.monad.xyz).
               </p>
             </div>
           </div>

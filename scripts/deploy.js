@@ -5,16 +5,19 @@ import { createWalletClient, createPublicClient, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { defineChain } from "viem";
 
-const monadTestnet = defineChain({
-  id: 10143,
-  name: "Monad Testnet",
+const monadChainId = process.env.MONAD_CHAIN_ID ? parseInt(process.env.MONAD_CHAIN_ID) : 143;
+const monadRpcUrl = process.env.MONAD_RPC_URL || "https://rpc.monad.xyz";
+
+const monadChain = defineChain({
+  id: monadChainId,
+  name: "Monad",
   nativeCurrency: { name: "Monad", symbol: "MON", decimals: 18 },
   rpcUrls: {
-    default: { http: ["https://testnet-rpc.monad.xyz"] },
-    public: { http: ["https://testnet-rpc.monad.xyz"] },
+    default: { http: [monadRpcUrl] },
+    public: { http: [monadRpcUrl] },
   },
   blockExplorers: {
-    default: { name: "MonadVision", url: "https://testnet.monadexplorer.com" },
+    default: { name: "MonadScan", url: "https://monadscan.com" },
   },
   testnet: true,
 });
@@ -40,8 +43,8 @@ async function main() {
   console.log(`Deployer Address: ${account.address}`);
 
   const publicClient = createPublicClient({
-    chain: monadTestnet,
-    transport: http("https://testnet-rpc.monad.xyz"),
+    chain: monadChain,
+    transport: http(monadRpcUrl),
   });
 
   const balance = await publicClient.getBalance({ address: account.address });
@@ -61,8 +64,8 @@ async function main() {
 
   const walletClient = createWalletClient({
     account,
-    chain: monadTestnet,
-    transport: http("https://testnet-rpc.monad.xyz"),
+    chain: monadChain,
+    transport: http(monadRpcUrl),
   });
 
   console.log("Deploying SafeSignRegistry to Monad Testnet (Chain ID 10143)...");

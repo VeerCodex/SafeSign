@@ -18,12 +18,12 @@ export function Footer() {
 
         <div className="flex items-center gap-4 text-gray-400">
           <a
-            href="https://testnet.monadexplorer.com"
+            href="https://monadscan.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white flex items-center gap-1 transition-colors"
           >
-            Monad Explorer
+            MonadScan
             <ExternalLink className="w-3 h-3" />
           </a>
           <a
@@ -35,7 +35,7 @@ export function Footer() {
             Monad Docs
             <ExternalLink className="w-3 h-3" />
           </a>
-          <span>Chain ID: 10143</span>
+          <span>Chain ID: 143</span>
         </div>
       </div>
     </footer>

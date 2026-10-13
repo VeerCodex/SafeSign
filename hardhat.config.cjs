@@ -14,6 +14,13 @@ module.exports = {
     },
   },
   networks: {
+    monad: {
+      url: process.env.MONAD_RPC_URL || "https://rpc.monad.xyz",
+      chainId: 143,
+      accounts: process.env.MONAD_PRIVATE_KEY
+        ? [process.env.MONAD_PRIVATE_KEY.startsWith("0x") ? process.env.MONAD_PRIVATE_KEY : `0x${process.env.MONAD_PRIVATE_KEY}`]
+        : [],
+    },
     monadTestnet: {
       url: process.env.MONAD_RPC_URL || "https://testnet-rpc.monad.xyz",
       chainId: 10143,
